@@ -21,3 +21,12 @@ function testIsSharingEnabled() {
         error err => test:assertFail(msg = err.message);
     }
 }
+
+@test:Config
+function testIsMeAdmin() {
+    var sharingEnabled = linkedinEP->isMeAdmin("28600911");
+    match sharingEnabled {
+        boolean x => test:assertTrue(x, msg = "isMeAdmin() failed");
+        error err => test:assertFail(msg = err.message);
+    }
+}
